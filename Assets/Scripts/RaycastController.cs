@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 public abstract class RaycastController : MonoBehaviour {
     public LayerMask colliderMask;
 
-    protected float skinWidth = 0.15f;
+    protected float skinWidth = 0.1f;
 
     public int horizontalRays = 4;
     public int verticalRays = 4;
