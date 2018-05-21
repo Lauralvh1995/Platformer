@@ -209,14 +209,13 @@ public class PlatformController : RaycastController
     {
         if (localWaypoints != null)
         {
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.green;
             float size = .3f;
 
             for (int i = 0; i < localWaypoints.Length; i++)
             {
                 Vector3 globalWaypointPos = (Application.isPlaying) ? globalWaypoints[i] : localWaypoints[i] + transform.position;
-                Gizmos.DrawLine(globalWaypointPos - Vector3.up * size, globalWaypointPos + Vector3.up * size);
-                Gizmos.DrawLine(globalWaypointPos - Vector3.left * size, globalWaypointPos + Vector3.left * size);
+                Gizmos.DrawSphere(globalWaypointPos, size);
             }
         }
     }
