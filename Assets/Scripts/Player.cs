@@ -27,10 +27,14 @@ public class Player : MonoBehaviour
     float velocityXSmoothing;
 
     Controller2D controller;
+    Animator animator;
+    SpriteRenderer renderer;
 
     void Start()
     {
         controller = GetComponent<Controller2D>();
+        animator = GetComponent<Animator>();
+        renderer = GetComponent<SpriteRenderer>();
 
         gravity = -(2 * maxJumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         maxJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -40,6 +44,15 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        animator.SetBool("Walking", Mathf.Abs(velocity.x) > 0.1f);
+        if(velocity.x < 0)
+        {
+            renderer.flipX = true;
+        }
+        if(velocity.x > 0)
+        {
+            renderer.flipX = false;
+        }
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         int wallDirX = (controller.collisions.left) ? -1 : 1;
 
